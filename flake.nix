@@ -48,5 +48,27 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
+        # 既存の homeConfigurations などはそのまま
+
+      apps.${system}.default = {
+        type = "app";
+        program = "${self.packages.${system}.setup-dotfiles}/bin/setup-dotfiles";
+      };
+
+      packages.${system}.setup-dotfiles = pkgs.writeShellApplication {
+        name = "setup-dotfiles";
+        runtimeInputs = [ home-manager ]; # ←これ重要
+        text = ''
+          echo "▶️ Running dotfiles setup..."
+
+          # ホスト名に合わせてhome-configを切り替える（例: rurou@MacBook-Air.local）
+          USER=$(whoami)
+          HOST=$(scutil --get LocalHostName) # Mac向け
+          FLAKE="${PWD}#${USER}@${HOST}"
+
+          echo "📦 Switching to flake: $FLAKE"
+          home-manager switch --flake "$FLAKE"
+        '';
+      };
     };
 }
