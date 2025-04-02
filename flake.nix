@@ -59,7 +59,7 @@
         name = "setup-dotfiles";
         runtimeInputs = [ home-manager ];
         text = ''
-          #!${pkgs.bash}/bin/bash
+          "#!${pkgs.bash}/bin/bash"
           echo "▶️ Running dotfiles setup..."
 
           # ホスト名に合わせてhome-configを切り替える（例: rurou@MacBook-Air.local）
