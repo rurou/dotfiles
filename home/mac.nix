@@ -138,7 +138,12 @@ in
       ll = "lsd -lahF --color=auto";
     };
   };
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+
+    userName = "rurou";
+    userEmail = "28745212+rurou@users.noreply.github.com";
+  };
   programs.git-credential-oauth.enable = true;
 
   # programs.nixvim = {
