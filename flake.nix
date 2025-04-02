@@ -55,7 +55,7 @@
         program = "${self.packages.${system}.setup-dotfiles}/bin/setup-dotfiles";
       };
 
-      packages.${system}.setup-dotfiles = pkgs.writeShellApplication {
+      packages.${system}.setup-dotfiles = pkgs.writeShellScriptBin {
         name = "setup-dotfiles";
         runtimeInputs = [ home-manager ]; # ←これ重要
         text = ''
