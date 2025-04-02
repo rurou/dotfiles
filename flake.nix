@@ -64,7 +64,7 @@
           # ホスト名に合わせてhome-configを切り替える（例: rurou@MacBook-Air.local）
           USER=$(whoami)
           HOST=$(scutil --get LocalHostName) # Mac向け
-          FLAKE="$(pwd)#${USER}@${HOST}"
+          FLAKE="$(pwd)#$(USER)@$(HOST)"
 
           echo "📦 Switching to flake: $FLAKE"
           home-manager switch --flake "$FLAKE"
