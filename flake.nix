@@ -22,7 +22,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, neovim-flake, neovim-nightly-overlay, nixvim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-flake, neovim-nightly-overlay, nixvim, ... }@inputs:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
