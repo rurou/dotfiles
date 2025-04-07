@@ -58,7 +58,7 @@
 
       apps.${system}.default = {
         type = "app";
-        program = "${self.packages.${system}.setup-dotfiles}/bin/update-home";
+        program = "${self.packages.${system}.update-home}/bin/update-home";
       };
 
       packages.${system}.update-home = pkgs.writeShellApplication {
