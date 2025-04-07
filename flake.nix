@@ -30,8 +30,10 @@
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
       ];
+      username = "rurou";
+      hostname = "MacBook-Air.local";
     in {
-      homeConfigurations."rurou" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
