@@ -52,7 +52,7 @@
         extraSpecialArgs = {
           inherit username hostname;
           inherit (inputs) home-manager;
-        }
+        };
       };
         # 既存の homeConfigurations などはそのまま
 
