@@ -17,7 +17,7 @@
 # Disable specific steps - same options as the command line flag
 # disable = ["system", "emacs"]
 
-disable = ["node", "ruby_gems", "gem", "home_manager"]
+disable = ["node", "ruby_gems", "gem", "nix", "home_manager"]
 
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
@@ -93,6 +93,14 @@ disable = ["node", "ruby_gems", "gem", "home_manager"]
 # "Custom command using interactive shell (unix)" = "-i vim_upgrade"
 
 "Update Home Manager and Flake" = "nix run ~/dotfiles#update-home"
+
+"Check Nix Version" = '''
+bash -c '
+echo -n "Current: "; nix --version
+echo -n "Latest : "; nix search nixpkgs nix | grep -Eo "nix-[0-9]+\.[0-9]+(\.[0-9]+)?" | sort -V | tail -1
+'
+'''
+
 
 [python]
 # enable_pip_review = true                         ###disabled by default
