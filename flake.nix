@@ -63,7 +63,7 @@
 
       packages.${system}.update-home = pkgs.writeShellApplication {
         name = "update-home";
-        runtimeInputs = [ home-manager ];
+        runtimeInputs = [ pkgs.git inputs.home-manager.packages.${system}.home-manager ];
         text = ''
           echo "▶️ Running dotfiles setup..."
 
