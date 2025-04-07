@@ -94,12 +94,7 @@ disable = ["node", "ruby_gems", "gem", "nix", "home_manager"]
 
 "Update Home Manager and Flake" = "nix run ~/dotfiles#update-home"
 
-"Check Nix Version" = '''
-bash -c '
-echo -n "Current: "; nix --version
-echo -n "Latest : "; nix search nixpkgs nix | grep -Eo "nix-[0-9]+\.[0-9]+(\.[0-9]+)?" | sort -V | tail -1
-'
-'''
+"Check Nix Version" = "~/dotfiles/check_nix_update.sh"
 
 
 [python]
