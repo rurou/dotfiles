@@ -52,19 +52,21 @@
 
       apps.${system}.default = {
         type = "app";
-        program = "${self.packages.${system}.setup-dotfiles}/bin/setup-dotfiles";
+        program = "${self.packages.${system}.setup-dotfiles}/bin/update-home";
       };
 
-      packages.${system}.setup-dotfiles = pkgs.writeShellApplication {
-        name = "setup-dotfiles";
+      packages.${system}.update-home = pkgs.writeShellApplication {
+        name = "update-home";
         runtimeInputs = [ home-manager ];
         text = ''
           echo "▶️ Running dotfiles setup..."
 
           # ホスト名に合わせてhome-configを切り替える（例: rurou@MacBook-Air.local）
           USER=$(whoami)
+
+          # shellcheck disable=SC2034
           HOST=$(scutil --get LocalHostName) # Mac向け
-          FLAKE="$(pwd)#$(USER)@$(HOST)"
+          FLAKE="$(pwd)#$USER@$HOST"
 
           echo "📦 Switching to flake: $FLAKE"
           home-manager switch --flake "$FLAKE"

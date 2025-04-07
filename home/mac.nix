@@ -8,50 +8,51 @@
 
 
 let
-  cliTools = with pkgs; [
-    bandwhich
-    bat
-    binwalk
-    bottom
-    coreutils
-    curl
-    ddrescue
-    difftastic
-    exiftool
-    fd
-    ffmpegthumbnailer
-    fish
-    foremost
-    fzf
-    ghq
-    gitui
-    gnutar
-    jq
-    lsd
-    darwin.lsusb
-    mas
-    neofetch
-    poppler
-    ripgrep
-    tmux
-    topgrade
-    tree
-    unar
-    yazi
-    git-credential-oauth
-    xdg-ninja
-    nodejs
+  # with pkgs; はすべてを検索してしまい、evaluation warning が大量に出るのでやめる
+  cliTools = [
+    pkgs.bandwhich
+    pkgs.bat
+    pkgs.binwalk
+    pkgs.bottom
+    pkgs.coreutils
+    pkgs.curl
+    pkgs.ddrescue
+    pkgs.difftastic
+    pkgs.exiftool
+    pkgs.fd
+    pkgs.ffmpegthumbnailer
+    pkgs.fish
+    pkgs.foremost
+    pkgs.fzf
+    pkgs.ghq
+    pkgs.gitui
+    pkgs.gnutar
+    pkgs.jq
+    pkgs.lsd
+    pkgs.darwin.lsusb
+    pkgs.mas
+    pkgs.neofetch
+    pkgs.poppler
+    pkgs.ripgrep
+    pkgs.tmux
+    pkgs.topgrade
+    pkgs.tree
+    pkgs.unar
+    pkgs.yazi
+    pkgs.git-credential-oauth
+    pkgs.xdg-ninja
+    pkgs.nodejs
     # nvfetcher
     #tree-sitter
-    dust
-    glances
-    gdu
-    dua
+    pkgs.dust
+    pkgs.glances
+    pkgs.gdu
+    pkgs.dua
   ];
   
-  guiTools = with pkgs; [
+  guiTools = [
     # wezterm
-    zed-editor
+    pkgs.zed-editor
   ];
 
   fzfFishNoTest = pkgs.fishPlugins.fzf-fish.overrideAttrs (_: {
