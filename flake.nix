@@ -65,7 +65,8 @@
           USER=$(whoami)
 
           # shellcheck disable=SC2034
-          HOST=$(scutil --get LocalHostName) # Mac向け
+          # HOST=$(scutil --get LocalHostName) # Mac向け
+          HOST=$(hostname)
           FLAKE="$(pwd)#$USER@$HOST"
 
           echo "📦 Switching to flake: $FLAKE"
