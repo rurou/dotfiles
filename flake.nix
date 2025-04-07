@@ -33,7 +33,7 @@
       username = "rurou";
       hostname = "MacBook-Air.local";
     in {
-      homeConfigurations."${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${username}@${hostname}" = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
@@ -49,6 +49,10 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = {
+          inherit username hostname;
+          inherit (inputs) home-manager;
+        }
       };
         # 既存の homeConfigurations などはそのまま
 
