@@ -170,7 +170,7 @@ in
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    # dotDir = ".config/zsh";
   };
 
   fonts.fontconfig.enable = true;
@@ -229,6 +229,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "vim";
+    ZDOTDIR = "${config.xdg.configHome}/zsh";
   };
 
   home.sessionPath = [
