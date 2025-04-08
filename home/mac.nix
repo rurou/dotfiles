@@ -55,6 +55,10 @@ let
     pkgs.zed-editor
   ];
 
+  fonts = [
+    pkgs.udev-gothic-nf
+  ];
+
   fzfFishNoTest = pkgs.fishPlugins.fzf-fish.overrideAttrs (_: {
     doCheck = false;
   });
@@ -86,7 +90,7 @@ in
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
 
-  home.packages = cliTools ++ guiTools;
+  home.packages = cliTools ++ guiTools ++ fonts;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # home.packages = with pkgs; [
@@ -168,6 +172,8 @@ in
     enable = true;
     dotDir = ".config/zsh";
   };
+
+  fonts.fontconfig.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
