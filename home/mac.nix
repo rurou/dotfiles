@@ -207,8 +207,8 @@ in
   #   "fish/fish_plugins".source = "${config.home.homeDirectory}/dotfiles/fish/fish_plugins";
   #   "nvim".source = "${config.home.homeDirectory}/dotfiles/nvim";
   #   "wezterm".source = "${config.home.homeDirectory}/dotfiles/wezterm";
-    "zsh/.zshrc".source = ./zsh/.zshrc
-    "zsh/.zprofile".source = ./zsh/.zprofile
+    "zsh/.zshrc".source = ./zsh/.zshrc;
+    "zsh/.zprofile".source = ./zsh/.zprofile;
   };
 
   # Home Manager can also manage your environment variables through
