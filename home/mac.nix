@@ -196,18 +196,20 @@ in
     ".config/lsd".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/lsd";
     ".config/karabiner/karabiner.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/karabiner/karabiner.json";
     ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/tmux";
-    ".config/zsh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh";
+    # ".config/zsh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh";
     ".config/vim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
     ".config/topgrade.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/topgrade.toml";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
   # 問題が多いので、home.fileに戻す
-  # xdg.configFile = {
+  xdg.configFile = {
   #   "fish/fish_plugins".source = "${config.home.homeDirectory}/dotfiles/fish/fish_plugins";
   #   "nvim".source = "${config.home.homeDirectory}/dotfiles/nvim";
   #   "wezterm".source = "${config.home.homeDirectory}/dotfiles/wezterm";
-  # };
+    "zsh/.zshrc".source = ./zsh/.zshrc
+    "zsh/.zprofile".source = ./zsh/.zprofile
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
