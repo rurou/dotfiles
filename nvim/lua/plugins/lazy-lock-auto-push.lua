@@ -1,9 +1,33 @@
 return {
-  dir = vim.fn.stdpath("config") .. "/lua/plugins/",
-  name = "lazy-lock-auto-push",
-  lazy = false,
+  -- dir = vim.fn.stdpath("config") .. "/lua/plugins/",
+  -- name = "lazy-lock-auto-push",
+  -- lazy = false,
   config = function()
     local Job = require("plenary.job")
+
+    -- local function debug_job(name)
+    --   return {
+    --     on_stdout = function(_, data)
+    --       if data then
+    --         vim.schedule(function()
+    --           vim.notify(name .. " stdout:\n" .. table.concat(data, "\n"), vim.log.levels.INFO)
+    --         end)
+    --       end
+    --     end,
+    --     on_stderr = function(_, data)
+    --       if data then
+    --         vim.schedule(function()
+    --           vim.notify(name .. " stderr:\n" .. table.concat(data, "\n"), vim.log.levels.ERROR)
+    --         end)
+    --       end
+    --     end,
+    --     on_exit = function(_, code)
+    --       vim.schedule(function()
+    --         vim.notify(name .. " exited with code " .. code, vim.log.levels.INFO)
+    --       end)
+    --     end,
+    --   }
+    -- end
 
     local function push_lazy_lock_if_changed()
       local repo_dir = os.getenv("HOME") .. "/dotfiles"
