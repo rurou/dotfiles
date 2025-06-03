@@ -51,7 +51,9 @@ let
   ];
   
   guiTools = [
-    # wezterm
+    # pkgs.wezterm
+    # ghosttyは20250603時点でNixだとbrokenだったので、Homebrewで入れる
+    # pkgs.ghostty
     pkgs.zed-editor
   ];
 
@@ -199,6 +201,7 @@ in
     ".config/zsh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh";
     ".config/vim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
     ".config/topgrade.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/topgrade.toml";
+    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど

@@ -1,0 +1,9 @@
+quick-terminal-position = "top"
+quick-terminal-screen = "main"
+quick-terminal-animation-duration = 0.3
+keybind = "global:f12=toggle_quick_terminal"
+
+
+font-family = "Cica Bold"
+font-size = 15
+theme = "Solarized Dark Higher Contrast"
