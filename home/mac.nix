@@ -145,12 +145,18 @@ in
         echo "Installing fisher..."
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
       end
+
+      if not set -q FZF_DEFAULT_OPTS
+        set -U autols_cmd "lsd -F --color=auto"
+      end
     '';
 
     shellAliases = {
       ls = "lsd -F --color=auto";
       ll = "lsd -lahF --color=auto";
     };
+
+    generateCompletions = true;
   };
   programs.git = {
     enable = true;
@@ -258,15 +264,15 @@ in
     with lib.meta;
     with config.home;
     {
-      fishUpdateCompletions = dag.entryAfter [ "installPackages" ] ''
-        FISH_BIN=$(command -v fish)
-        if [ -n "$FISH_BIN" ]; then
-          echo "Found fish at: $FISH_BIN" >&2
-          $FISH_BIN -c 'fish_update_completions'
-        else
-          echo "fish not found in PATH." >&2
-        fi
-      '';
+      # fishUpdateCompletions = dag.entryAfter [ "installPackages" ] ''
+      #   FISH_BIN=$(command -v fish)
+      #   if [ -n "$FISH_BIN" ]; then
+      #     echo "Found fish at: $FISH_BIN" >&2
+      #     $FISH_BIN -c 'fish_update_completions'
+      #   else
+      #     echo "fish not found in PATH." >&2
+      #   fi
+      # '';
     };
 
   # Let Home Manager install and manage itself.
