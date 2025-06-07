@@ -4,6 +4,20 @@
     text = ''
       set -euo pipefail
 
+      DOTFILES_DIR="$HOME/dotfiles"
+      REPO_URL="https://github.com/rurou/dotfiles.git"
+  
+      echo "🔍 Checking if $DOTFILES_DIR exists..."
+      if [ ! -d "$DOTFILES_DIR" ]; then
+        echo "📥 Cloning dotfiles repo into $DOTFILES_DIR..."
+        git clone "$REPO_URL" "$DOTFILES_DIR"
+      else
+        echo "✅ $DOTFILES_DIR already exists."
+      fi
+  
+      echo "📦 Changing to $DOTFILES_DIR..."
+      cd "$DOTFILES_DIR"
+      
       echo "✅ Checking flake..."
       nix flake check
 
