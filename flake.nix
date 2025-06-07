@@ -59,25 +59,15 @@
       apps.${system}.default = {
         type = "app";
         program = "${self.packages.${system}.update-home}/bin/update-home";
+          meta = {
+            description = "Run home-manager switch using flake";
+            license = pkgs.lib.licenses.mit;
+            maintainers = [ "rurou" ];
+          };
       };
 
-      packages.${system}.update-home = pkgs.writeShellApplication {
-        name = "update-home";
-        runtimeInputs = [ pkgs.git inputs.home-manager.packages.${system}.home-manager ];
-        text = ''
-          echo "▶️ Running dotfiles setup..."
-
-          # ホスト名に合わせてhome-configを切り替える（例: rurou@MacBook-Air.local）
-          USER=$(whoami)
-
-          # shellcheck disable=SC2034
-          # HOST=$(scutil --get LocalHostName) # Mac向け
-          HOST=$(hostname)
-          FLAKE="${self}#$USER@$HOST"
-
-          echo "📦 Switching to flake: $FLAKE"
-          home-manager switch --flake "$FLAKE"
-        '';
+      packages.${system}.update-home = import ./update_home-manager.nix {
+        inherit pkgs system self;
       };
     };
 }

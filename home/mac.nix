@@ -48,6 +48,9 @@ let
     pkgs.glances
     pkgs.gdu
     pkgs.dua
+    pkgs.byobu
+    # bitwarden-cliは20250607時点でNixだとbrokenだったので、Homebrewで入れる
+    # pkgs.bitwarden-cli
   ];
   
   guiTools = [
@@ -242,18 +245,24 @@ in
     "/etc/profiles/per-user/${config.home.username}/bin"
   ];
 
+  home.extraActivationPath = [
+    pkgs.fish
+  ];
+
   home.activation =
     with lib.hm;
     with lib.meta;
     with config.home;
     {
-      # installFisher = dag.entryAfter ["writeBoundary"] ''
-      #   run ${getExe pkgs.fish} -c "${getExe pkgs.curl} -sL https://git.io/fisher | source && fisher update"
-      # '';
-      # installAstroNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      #   run "${lib.meta.getExe pkgs.git} clone --depth 1 https://github.com/AstroNvim/template ${config.home.homeDirectory}/.config/nvim"
-      #   run "rm -rf ~/.config/nvim/.git"
-      # '';
+      fishUpdateCompletions = dag.entryAfter [ "installPackages" ] ''
+        FISH_BIN=$(command -v fish)
+        if [ -n "$FISH_BIN" ]; then
+          echo "Found fish at: $FISH_BIN" >&2
+          $FISH_BIN -c 'fish_update_completions'
+        else
+          echo "fish not found in PATH." >&2
+        fi
+      '';
     };
 
   # Let Home Manager install and manage itself.
