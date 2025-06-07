@@ -25,7 +25,11 @@
   outputs = { self, nixpkgs, home-manager, neovim-flake, neovim-nightly-overlay, nixvim, ... }@inputs:
     let
       system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default

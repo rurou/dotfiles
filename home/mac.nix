@@ -58,7 +58,10 @@ let
     # ghosttyは20250603時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.ghostty
     pkgs.zed-editor
-    pkgs.lmstudio
+    # https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/347
+    # /Applications以外からの起動が出来ないissueのために
+    # 明示的にbrokenになっているのでHomebrewに移動
+    # pkgs.lmstudio
   ];
 
   fonts = [
