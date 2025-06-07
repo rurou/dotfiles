@@ -92,7 +92,7 @@ disable = ["node", "ruby_gems", "gem", "nix", "home_manager"]
 # "Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 # "Custom command using interactive shell (unix)" = "-i vim_upgrade"
 
-"Update Home Manager and Flake" = "nix run ~/dotfiles#update-home"
+"Update Home Manager and Flake" = "cd ~/dotfiles && nix run ~/dotfiles#update-home"
 
 "Check Nix Version" = "~/dotfiles/check_nix_update.sh"
 

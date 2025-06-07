@@ -12,13 +12,12 @@
 
       echo "🏠 Applying home-manager config..."
       HOST=$(hostname)
-      FLAKE="${self}#$USER@$HOST"
+      FLAKE="${toString self}#$USER@$HOST"
       
       echo "📦 Switching to flake: $FLAKE"
       home-manager switch --flake "$FLAKE"
 
       echo "🔍 Checking git status..."
-      # cd ${toString self}
       cd "$(git rev-parse --show-toplevel)"
 
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
