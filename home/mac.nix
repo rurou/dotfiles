@@ -58,6 +58,7 @@ let
     # ghosttyは20250603時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.ghostty
     pkgs.zed-editor
+    pkgs.lmstudio
   ];
 
   fonts = [
