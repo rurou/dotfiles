@@ -29,7 +29,12 @@
       FLAKE="${toString self}#$USER@$HOST"
       
       echo "📦 Switching to flake: $FLAKE"
-      home-manager switch --flake "$FLAKE"
+      if command -v home-manager >/dev/null 2>&1; then
+        home-manager switch --flake "$FLAKE"
+      else
+      echo "📦 Install home-manager and switching to flake: $FLAKE"
+        nix run github:nix-community/home-manager -- switch --flake "$FLAKE"
+      fi
 
       echo "🔍 Checking git status..."
       cd "$(git rev-parse --show-toplevel)"
