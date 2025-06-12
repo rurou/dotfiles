@@ -37,7 +37,9 @@
       username = "rurou";
       hostname = "MacBook-Air.local";
     in {
-      homeConfigurations."${username}@${hostname}" = inputs.home-manager.lib.homeManagerConfiguration {
+      # homeConfigurations."${username}@${hostname}" = inputs.home-manager.lib.homeManagerConfiguration {
+      # ホスト名はいまの運用だと冗長なので削除
+      homeConfigurations."${username}" = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
