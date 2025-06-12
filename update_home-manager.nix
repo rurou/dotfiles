@@ -25,8 +25,10 @@
       nix flake update
 
       echo "🏠 Applying home-manager config..."
-      HOST=$(hostname)
-      FLAKE="${toString self}#$USER@$HOST"
+      # ホスト名はいまの運用だと冗長なので削除
+      # HOST=$(hostname)
+      # FLAKE="${toString self}#$USER@$HOST"
+      FLAKE="${toString self}#$USER"
       
       echo "📦 Switching to flake: $FLAKE"
       if command -v home-manager >/dev/null 2>&1; then
