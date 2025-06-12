@@ -143,7 +143,13 @@ in
     interactiveShellInit = ''
       if not functions -q fisher
         echo "Installing fisher..."
+        cd dotfiles/fish
+
+        mv fish_plugins fish_plugins.bak
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+        rm fish_plugins
+        mv fish_plugins.bak fish_plugins
       end
 
       if not set -q FZF_DEFAULT_OPTS
