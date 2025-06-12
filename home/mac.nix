@@ -143,7 +143,7 @@ in
     interactiveShellInit = ''
       if not functions -q fisher
         echo "Installing fisher..."
-        cd dotfiles/fish
+        cd $HOME/dotfiles/fish
 
         mv fish_plugins fish_plugins.bak
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
