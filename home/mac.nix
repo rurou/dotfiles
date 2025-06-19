@@ -63,6 +63,7 @@ let
     # /Applications以外からの起動が出来ないissueのために
     # 明示的にbrokenになっているのでHomebrewに移動
     # pkgs.lmstudio
+    pkgs.sketchybar
   ];
 
   fonts = [
