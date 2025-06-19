@@ -152,10 +152,6 @@ in
         rm fish_plugins
         mv fish_plugins.bak fish_plugins
       end
-
-      if not set -q FZF_DEFAULT_OPTS
-        set -U autols_cmd "lsd -F --color=auto"
-      end
     '';
 
     shellAliases = {
