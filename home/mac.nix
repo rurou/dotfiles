@@ -51,6 +51,7 @@ let
     pkgs.byobu
     # bitwarden-cliは20250607時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.bitwarden-cli
+    pkgs.uv
   ];
   
   guiTools = [
