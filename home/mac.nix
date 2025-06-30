@@ -52,6 +52,7 @@ let
     # bitwarden-cliは20250607時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.bitwarden-cli
     pkgs.uv
+    pkgs.jankyborders
   ];
   
   guiTools = [
@@ -64,6 +65,8 @@ let
     # 明示的にbrokenになっているのでHomebrewに移動
     # pkgs.lmstudio
     pkgs.sketchybar
+    pkgs.alt-tab-macos
+    pkgs.aerospace
   ];
 
   fonts = [
@@ -123,6 +126,37 @@ in
     # '')
 
   # ];
+
+  launchd.agents.sketchybar = {
+    enable = true;
+    config = {
+      Label = "dev.rurou.sketchybar";
+      ProgramArguments = [ "${pkgs.sketchybar}/bin/sketchybar" ];
+      RunAtLoad = true;
+      KeepAlive = true;
+      EnvironmentVariables = {
+        PATH = "${pkgs.sketchybar}/bin:${config.home.homeDirectory}/.nix-profile/bin:/run/current-system/sw/bin:/usr/bin:/bin";
+        CONFIG_DIR = "${config.home.homeDirectory}/.config/sketchybar";
+      };
+      StandardErrorPath = "${config.xdg.dataHome}/sketchybar/sketchybar.err.log";
+      StandardOutPath = "${config.xdg.dataHome}/sketchybar/sketchybar.out.log";
+    };
+  };
+
+  launchd.agents.jankyborders = {
+    enable = true;
+    config = {
+    Label = "dev.rurou.jankyborders";
+    ProgramArguments = [ "${pkgs.jankyborders}/bin/borders" ];
+    RunAtLoad = true;
+    KeepAlive = true;
+    EnvironmentVariables = {
+      PATH = "${pkgs.jankyborders}/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin";
+    };
+    StandardOutPath = "${config.xdg.dataHome}/jankyborders/jankyborders.out.log";
+    StandardErrorPath = "${config.xdg.dataHome}/jankyborders/jankyborders.err.log";
+    };
+  };
 
   programs.fish = {
     enable = true;
@@ -220,6 +254,8 @@ in
     ".config/topgrade.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/topgrade.toml";
     ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
     ".config/sketchybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sketchybar";
+    ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/aerospace";
+    ".config/borders".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/borders";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
