@@ -50,7 +50,7 @@
           {
             nixpkgs.overlays = overlays;
           }
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
         ];
 
         # Optionally use extraSpecialArgs
