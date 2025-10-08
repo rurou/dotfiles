@@ -26,7 +26,7 @@ let
     pkgs.fzf
     pkgs.ghq
     # gituiは20251008時点でNixだとcargoのエラーでbuildに失敗するので、Homebrewで入れる
-    pkgs.gitui
+    #pkgs.gitui
     pkgs.gnutar
     pkgs.jq
     pkgs.lsd
