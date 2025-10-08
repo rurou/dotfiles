@@ -226,7 +226,7 @@ in
     # dotDir = ".config/zsh";
   };
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = pkgs.stdenv.isLinux;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
