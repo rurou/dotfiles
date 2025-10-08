@@ -75,6 +75,7 @@ let
 
   fzfFishNoTest = pkgs.fishPlugins.fzf-fish.overrideAttrs (_: {
     doCheck = false;
+    meta.broken = false;
   });
 in
 {
