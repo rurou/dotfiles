@@ -201,8 +201,8 @@ in
   programs.git = {
     enable = true;
 
-    userName = "rurou";
-    userEmail = "28745212+rurou@users.noreply.github.com";
+    settings.user.name = "rurou";
+    settings.user.email = "28745212+rurou@users.noreply.github.com";
   };
   programs.git-credential-oauth.enable = true;
 
