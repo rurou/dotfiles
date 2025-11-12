@@ -31,7 +31,8 @@ let
     pkgs.jq
     pkgs.lsd
     pkgs.darwin.lsusb
-    pkgs.mas
+    # Nixのmasは更新が遅くて度々エラーになるので、homebrewに戻す
+    # pkgs.mas
     pkgs.neofetch
     pkgs.poppler
     pkgs.ripgrep
