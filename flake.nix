@@ -8,21 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-flake = {
-      url = "github:konradmalik/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-flake, neovim-nightly-overlay, nixvim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, nixvim, ... }@inputs:
     let
       system = "aarch64-darwin";
       # pkgs = nixpkgs.legacyPackages.${system};
@@ -46,11 +38,9 @@
         # the path to your home.nix.
         modules = [
           ./home/mac.nix
-          neovim-flake.homeManagerModules.default
           {
             nixpkgs.overlays = overlays;
           }
-          nixvim.homeModules.nixvim
         ];
 
         # Optionally use extraSpecialArgs
