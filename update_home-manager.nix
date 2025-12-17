@@ -28,7 +28,9 @@
       # ホスト名はいまの運用だと冗長なので削除
       # HOST=$(hostname)
       # FLAKE="${toString self}#$USER@$HOST"
-      FLAKE="${toString self}#$USER"
+      # FLAKE="${toString self}#$USER"
+      # storeのpathを指定してしまってエラーが出たので修正
+      FLAKE="$DOTFILES_DIR#$USER"
       
       echo "📦 Switching to flake: $FLAKE"
       if command -v home-manager >/dev/null 2>&1; then
