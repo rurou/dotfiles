@@ -54,7 +54,7 @@ let
     # bitwarden-cliは20250607時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.bitwarden-cli
     pkgs.uv
-    pkgs.jankyborders
+    # pkgs.jankyborders
   ];
   
   guiTools = [
@@ -146,20 +146,20 @@ in
     };
   };
 
-  launchd.agents.jankyborders = {
-    enable = true;
-    config = {
-    Label = "dev.rurou.jankyborders";
-    ProgramArguments = [ "${pkgs.jankyborders}/bin/borders" ];
-    RunAtLoad = true;
-    KeepAlive = true;
-    EnvironmentVariables = {
-      PATH = "${pkgs.jankyborders}/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin";
-    };
-    StandardOutPath = "${config.xdg.dataHome}/jankyborders/jankyborders.out.log";
-    StandardErrorPath = "${config.xdg.dataHome}/jankyborders/jankyborders.err.log";
-    };
-  };
+  # launchd.agents.jankyborders = {
+  #   enable = true;
+  #   config = {
+  #   Label = "dev.rurou.jankyborders";
+  #   ProgramArguments = [ "${pkgs.jankyborders}/bin/borders" ];
+  #   RunAtLoad = true;
+  #   KeepAlive = true;
+  #   EnvironmentVariables = {
+  #     PATH = "${pkgs.jankyborders}/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin";
+  #   };
+  #   StandardOutPath = "${config.xdg.dataHome}/jankyborders/jankyborders.out.log";
+  #   StandardErrorPath = "${config.xdg.dataHome}/jankyborders/jankyborders.err.log";
+  #   };
+  # };
 
   programs.fish = {
     enable = true;
