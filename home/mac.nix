@@ -56,6 +56,7 @@ let
     pkgs.uv
     # pkgs.jankyborders
     pkgs.direnv
+    pkgs.nix-direnv
   ];
   
   guiTools = [
