@@ -61,7 +61,8 @@ let
     # pkgs.wezterm
     # ghosttyは20250603時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.ghostty
-    pkgs.zed-editor
+    # Zedはフルビルドされて遅いのでcaskにする
+    # pkgs.zed-editor
     # https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/347
     # /Applications以外からの起動が出来ないissueのために
     # 明示的にbrokenになっているのでHomebrewに移動
