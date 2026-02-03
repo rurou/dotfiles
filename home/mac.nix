@@ -55,6 +55,7 @@ let
     # pkgs.bitwarden-cli
     pkgs.uv
     # pkgs.jankyborders
+    pkgs.direnv
   ];
   
   guiTools = [
