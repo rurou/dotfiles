@@ -33,7 +33,7 @@ let
     pkgs.darwin.lsusb
     # Nixのmasは更新が遅くて度々エラーになるので、homebrewに戻す
     # pkgs.mas
-    pkgs.neofetch
+    pkgs.fastfetch
     pkgs.poppler
     pkgs.ripgrep
     pkgs.tmux
@@ -70,7 +70,7 @@ let
     # 明示的にbrokenになっているのでHomebrewに移動
     # pkgs.lmstudio
     pkgs.sketchybar
-    pkgs.alt-tab-macos
+    # pkgs.alt-tab-macos
     pkgs.aerospace
   ];
 
