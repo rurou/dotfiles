@@ -22,9 +22,9 @@
         inherit system;
         config.allowUnfree = true;
 
-        overlays = [
-          inputs.neovim-nightly-overlay.overlays.default
-        ];
+        # overlays = [
+        #   inputs.neovim-nightly-overlay.overlays.default
+        # ];
       };
       username = "rurou";
       hostname = "MacBook-Air.local";
@@ -38,9 +38,6 @@
         # the path to your home.nix.
         modules = [
           ./home/mac.nix
-          # {
-          #   nixpkgs.overlays = overlays;
-          # }
         ];
 
         # Optionally use extraSpecialArgs
