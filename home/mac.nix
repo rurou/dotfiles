@@ -208,10 +208,17 @@ in
     settings.user.name = "rurou";
     settings.user.email = "28745212+rurou@users.noreply.github.com";
 
-    "credential \"https://github.com\"".helper = "!gh auth git-credential";
-    "includeIf \"gitdir:~/ghq/github.com/eartheyes/\"".path = "~/.config/git/gitconfig-work";
+    includes = [
+      {
+        path = "~/.config/git/gitconfig-credential";
+      }
+      {
+        condition = "gitdir:~/ghq/github.com/eartheyes/";
+        path = "~/.config/git/gitconfig-work";
+      }
+    ];
   };
-  programs.git-credential-oauth.enable = false;
+  programs.git-credential-oauth.enable = true;
 
   # programs.nixvim = {
   #   enable = true;
@@ -270,7 +277,8 @@ in
     ".config/sketchybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sketchybar";
     ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/aerospace";
     ".config/borders".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/borders";
-    ".config/git/gitconfig-eartheyes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-eartheyes";
+    ".config/git/gitconfig-work".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-work";
+    ".config/git/gitconfig-credential".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-credential";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
