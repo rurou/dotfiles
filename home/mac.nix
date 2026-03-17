@@ -207,8 +207,13 @@ in
 
     settings.user.name = "rurou";
     settings.user.email = "28745212+rurou@users.noreply.github.com";
+
+    extraConfig = {
+      credential."https://github.com".helper = "!gh auth git-credential";
+      includeIf."gitdir:~/ghq/github.com/eartheyes/".path = "~/.gitconfig-eartheyes";
+    };
   };
-  programs.git-credential-oauth.enable = true;
+  programs.git-credential-oauth.enable = false;
 
   # programs.nixvim = {
   #   enable = true;
@@ -267,6 +272,7 @@ in
     ".config/sketchybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sketchybar";
     ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/aerospace";
     ".config/borders".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/borders";
+    ".config/git/gitconfig-eartheyes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-eartheyes";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
