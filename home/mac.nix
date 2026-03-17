@@ -208,10 +208,8 @@ in
     settings.user.name = "rurou";
     settings.user.email = "28745212+rurou@users.noreply.github.com";
 
-    extraConfig = {
-      credential."https://github.com".helper = "!gh auth git-credential";
-      includeIf."gitdir:~/ghq/github.com/eartheyes/".path = "~/.gitconfig-eartheyes";
-    };
+    "credential \"https://github.com\"".helper = "!gh auth git-credential";
+    "includeIf \"gitdir:~/ghq/github.com/eartheyes/\"".path = "~/.config/git/gitconfig-work";
   };
   programs.git-credential-oauth.enable = false;
 
