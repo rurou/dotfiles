@@ -318,6 +318,7 @@ in
     "$HOME/.local/bin"
     "$HOME/.nix-profile/bin"
     "/etc/profiles/per-user/${config.home.username}/bin"
+    "/nix/var/nix/profiles/default/bin"
   ];
 
   home.extraActivationPath = [
