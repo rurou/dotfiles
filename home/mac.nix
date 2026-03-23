@@ -57,6 +57,7 @@ let
     # pkgs.jankyborders
     pkgs.direnv
     pkgs.nix-direnv
+    pkgs.plantuml
   ];
   
   guiTools = [
