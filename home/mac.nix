@@ -280,6 +280,7 @@ in
     ".config/borders".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/borders";
     ".config/git/gitconfig-work".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-work";
     ".config/git/gitconfig-credential".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-credential";
+    ".local/lib/plantuml.jar".source = "${pkgs.plantuml}/lib/plantuml.jar";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
