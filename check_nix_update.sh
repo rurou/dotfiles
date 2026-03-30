@@ -1,29 +1,28 @@
 #!/bin/bash
+# Lix バージョンチェック
 
-# Lix 対応版バージョンチェック
-
-# 現在のバージョン（"nix (Lix, like Nix) 2.95.1" から数値部分を抽出）
 current=$(nix --version 2>&1 | grep -Eo "[0-9]+\.[0-9]+(\.[0-9]+)?" | head -1)
 
-# Lix公式Giteaから最新タグを取得（APIで最新リリースを確認）
-latest=$(curl -s "https://git.lix.systems/lix-project/lix/releases?limit=1" \
-  | grep -Eo 'tag/[0-9]+\.[0-9]+(\.[0-9]+)?' \
-  | head -1 \
-  | grep -Eo "[0-9]+\.[0-9]+(\.[0-9]+)?")
-
-# フォールバック: upgrade-nix --dry-run も試みる
-if [ -z "$latest" ]; then
-  latest=$(nix upgrade-nix --dry-run 2>&1 | grep -Eo "[0-9]+\.[0-9]+(\.[0-9]+)?" | tail -1)
-fi
+latest=$(curl -s "https://git.lix.systems/api/v1/repos/lix-project/lix/tags?limit=1" \
+  | python3 -c "import sys,json; print(json.load(sys.stdin)[0]['name'])" 2>/dev/null)
 
 echo "Current Lix version : $current"
 echo "Latest Lix version  : $latest"
 
 if [ -z "$latest" ]; then
   echo "⚠️  Could not determine latest version."
-elif [ "$current" != "$latest" ]; then
-  echo "⚠️  Update available! ($current → $latest)"
-else
+  exit 1
+fi
+
+verlte() {
+  [ "$1" = "$(printf '%s\n' "$1" "$2" | sort -V | head -1)" ]
+}
+
+if [ "$current" = "$latest" ]; then
   echo "✅ Lix is up to date."
+elif verlte "$latest" "$current"; then
+  echo "✅ Lix is newer than latest release (dev build?)."
+else
+  echo "⚠️  Update available! ($current → $latest)"
 fi
 
