@@ -1,0 +1,5 @@
+[manager]
+prepend_keymap = [
+  { on = "<C-g>", run = "plugin lazygit", desc = "Open lazygit" },
+  { on = "<C-u>", run = "plugin gitui",   desc = "Open gitui" },
+]
