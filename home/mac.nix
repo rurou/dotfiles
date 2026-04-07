@@ -25,8 +25,7 @@ let
     pkgs.foremost
     pkgs.fzf
     pkgs.ghq
-    # gituiは20251008時点でNixだとcargoのエラーでbuildに失敗するので、Homebrewで入れる
-    #pkgs.gitui
+    pkgs.gitui
     pkgs.gnutar
     pkgs.jq
     pkgs.lsd
@@ -58,6 +57,8 @@ let
     pkgs.direnv
     pkgs.nix-direnv
     pkgs.plantuml
+    # Neovimからの操作のために追加
+    pkgs.lazygit
   ];
   
   guiTools = [
@@ -184,6 +185,9 @@ in
     ];
 
     interactiveShellInit = ''
+      set -a fish_function_path ~/dotfiles/fish/functions_managed
+      set -a fish_complete_path ~/dotfiles/fish/completions_managed
+
       if not functions -q fisher
         echo "Installing fisher..."
         cd $HOME/dotfiles/fish
@@ -281,6 +285,7 @@ in
     ".config/git/gitconfig-work".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-work";
     ".config/git/gitconfig-credential".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/git/gitconfig-credential";
     ".local/lib/plantuml.jar".source = "${pkgs.plantuml}/lib/plantuml.jar";
+    ".config/yazi".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
