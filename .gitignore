@@ -1,3 +1,13 @@
+# バックアップ
+*.tar.gz
+*.bak
+
+# ログ
+*.log
+tmux-*.log
+
+# 環境依存
+vim/.netrwhist
+zsh/.zsh_sessions/
 .zcompdump
-.bak
 

@@ -59,6 +59,7 @@ let
     pkgs.plantuml
     # Neovimからの操作のために追加
     pkgs.lazygit
+    pkgs.cargo
   ];
   
   guiTools = [
