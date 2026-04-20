@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  # neovim-flake,
   ...
 }:
 
@@ -60,6 +59,9 @@ let
     # Neovimからの操作のために追加
     pkgs.lazygit
     pkgs.cargo
+    pkgs.graphviz
+    # programsから移行
+    pkgs.neovim
   ];
   
   guiTools = [
@@ -225,23 +227,6 @@ in
     ];
   };
   programs.git-credential-oauth.enable = true;
-
-  # programs.nixvim = {
-  #   enable = true;
-  #   # plugnins = [
-  #   #   nvim-treesitter
-  #   # ];
-  #   package = pkgs.neovim;
-  #   # package = pkgs.overlays.neovim-nightly;
-  # };
-
-  programs.neovim = {
-    enable = true;
-
-    # plugins = [
-    #   nvim-treesitter
-    # ];
-  };
 
   programs.zsh = {
     enable = true;
