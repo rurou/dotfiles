@@ -62,6 +62,9 @@ let
     pkgs.graphviz
     # programsから移行
     pkgs.neovim
+    pkgs.colima
+    pkgs.docker
+    pkgs.docker-compose
   ];
   
   guiTools = [
