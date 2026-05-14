@@ -1,0 +1,22 @@
+// ~/.config/zellij/layouts/mobile.kdl
+// モバイル端末 (iPad/iPhone) からmosh接続した時の小画面用レイアウト
+// 起動: `zellij --layout mobile`
+// 切替: `zellij action override-layout ~/.config/zellij/layouts/mobile.kdl`
+//
+// 設計:
+//   - tab-barとstatus-barを廃止、compact-barで1行に集約
+//   - 縦の領域を最大化 (小画面で1行でも貴重)
+//   - 単一ペイン、必要ならfloating paneで一時的に作業領域を出す
+
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+
+    tab name="m" {
+        pane
+    }
+}

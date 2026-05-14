@@ -1,0 +1,49 @@
+// ~/.config/zellij/layouts/dev.kdl
+// 開発作業用レイアウト
+// 起動: `zellij --layout dev`
+// 切替: `zellij action override-layout ~/.config/zellij/layouts/dev.kdl`
+//
+// レイアウト:
+//   ┌─────────────────┬────────────┐
+//   │                 │  fish      │
+//   │   nvim          │            │
+//   │                 ├────────────┤
+//   │                 │  lazygit   │
+//   └─────────────────┴────────────┘
+
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab name="code" focus=true {
+        pane split_direction="vertical" {
+            // 左60%: エディタ
+            // commandを指定するとペイン起動時に自動実行される
+            // 自動起動が鬱陶しければ command 行を削除すれば素のshellが立つ
+            pane size="60%" {
+                command "nvim"
+                args "."
+            }
+            // 右40%: 上下分割
+            pane split_direction="horizontal" {
+                pane  // 上: 素のfish
+                pane size="40%" {
+                    // 下: lazygit常駐 (要らなければここも素のpaneにする)
+                    command "lazygit"
+                }
+            }
+        }
+    }
+
+    // 追加タブが必要なら以下のように足せる
+    // tab name="logs" {
+    //     pane
+    // }
+}
