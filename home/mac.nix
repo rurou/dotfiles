@@ -210,6 +210,7 @@ in
       end
 
       pay-respects fish --alias | source
+      atuin init fish| source
     '';
 
     shellAliases = {
