@@ -208,6 +208,8 @@ in
         rm fish_plugins
         mv fish_plugins.bak fish_plugins
       end
+
+      pay-respects fish --alias | source
     '';
 
     shellAliases = {

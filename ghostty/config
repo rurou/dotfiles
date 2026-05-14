@@ -1,8 +1,9 @@
 quick-terminal-position = "top"
 quick-terminal-screen = "main"
 quick-terminal-animation-duration = 0.3
+quick-terminal-autohide = false
+quick-terminal-space-behavior = move
 keybind = "global:f12=toggle_quick_terminal"
-
 
 # font-family = "Cica Bold"
 font-family = "Cica Bold"
