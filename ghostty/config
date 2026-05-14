@@ -9,3 +9,6 @@ font-family = "Cica Bold"
 font-thicken
 font-size = 15
 theme = "Solarized Dark Higher Contrast"
+
+macos-option-as-alt = left
+

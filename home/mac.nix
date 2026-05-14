@@ -65,6 +65,9 @@ let
     pkgs.colima
     pkgs.docker
     pkgs.docker-compose
+    pkgs.zellij
+    pkgs.atuin
+    pkgs.pay-respects
   ];
   
   guiTools = [
@@ -77,7 +80,8 @@ let
     # /Applications以外からの起動が出来ないissueのために
     # 明示的にbrokenになっているのでHomebrewに移動
     # pkgs.lmstudio
-    pkgs.sketchybar
+    # MacBook Airだとタイル型はスペースが足りないので、一旦無効化しておく
+    # pkgs.sketchybar
     # pkgs.alt-tab-macos
     pkgs.aerospace
   ];
