@@ -145,22 +145,22 @@ in
 
   # ];
 
-  launchd.agents.sketchybar = {
-    enable = true;
-    config = {
-      Label = "dev.rurou.sketchybar";
-      ProgramArguments = [ "${pkgs.sketchybar}/bin/sketchybar" ];
-      RunAtLoad = true;
-      KeepAlive = true;
-      EnvironmentVariables = {
-        PATH = "${pkgs.sketchybar}/bin:${config.home.homeDirectory}/.nix-profile/bin:/run/current-system/sw/bin:/usr/bin:/bin";
-        CONFIG_DIR = "${config.home.homeDirectory}/.config/sketchybar";
-      };
-      StandardErrorPath = "${config.xdg.dataHome}/sketchybar/sketchybar.err.log";
-      StandardOutPath = "${config.xdg.dataHome}/sketchybar/sketchybar.out.log";
-    };
-  };
-
+  # launchd.agents.sketchybar = {
+  #   enable = true;
+  #   config = {
+  #     Label = "dev.rurou.sketchybar";
+  #     ProgramArguments = [ "${pkgs.sketchybar}/bin/sketchybar" ];
+  #     RunAtLoad = true;
+  #     KeepAlive = true;
+  #     EnvironmentVariables = {
+  #       PATH = "${pkgs.sketchybar}/bin:${config.home.homeDirectory}/.nix-profile/bin:/run/current-system/sw/bin:/usr/bin:/bin";
+  #       CONFIG_DIR = "${config.home.homeDirectory}/.config/sketchybar";
+  #     };
+  #     StandardErrorPath = "${config.xdg.dataHome}/sketchybar/sketchybar.err.log";
+  #     StandardOutPath = "${config.xdg.dataHome}/sketchybar/sketchybar.out.log";
+  #   };
+  # };
+  #
   # launchd.agents.jankyborders = {
   #   enable = true;
   #   config = {
