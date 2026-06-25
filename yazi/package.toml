@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:gitui"
-rev = "598cdb6"
+rev = "38efe09"
 hash = "99aa06d3014798d86001c324468d497f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:lazygit"
-rev = "598cdb6"
+rev = "38efe09"
 hash = "99aa06d3014798d86001c324468d497f"
 
 [flavor]
