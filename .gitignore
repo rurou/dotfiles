@@ -11,3 +11,6 @@ vim/.netrwhist
 zsh/.zsh_sessions/
 .zcompdump
 
+# Zellijのセッション永続化代わりに使うlayout
+zellij/layouts/wip.kdl
+zellij/layouts/wip_*.kdl

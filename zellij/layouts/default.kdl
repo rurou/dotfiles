@@ -16,6 +16,17 @@ layout {
                 // モード色: tokyonight night の lualine_a 準拠(フラット・矢印なし)
                 mode_normal      "#[bg=#7aa2f7,fg=#1a1b26,bold] NORMAL "
                 mode_locked      "#[bg=#565f89,fg=#1a1b26,bold] LOCKED "
+                mode_pane        "#[bg=#7dcfff,fg=#1a1b26,bold] PANE "
+                mode_tab         "#[bg=#9ece6a,fg=#1a1b26,bold] TAB "
+                mode_resize      "#[bg=#e0af68,fg=#1a1b26,bold] RESIZE "
+                mode_move        "#[bg=#ff9e64,fg=#1a1b26,bold] MOVE "
+                mode_scroll      "#[bg=#bb9af7,fg=#1a1b26,bold] SCROLL "
+                mode_search      "#[bg=#bb9af7,fg=#1a1b26,bold] SEARCH "
+                mode_entersearch "#[bg=#bb9af7,fg=#1a1b26,bold] SEARCH: "
+                mode_session     "#[bg=#f7768e,fg=#1a1b26,bold] SESSION "
+                mode_tmux        "#[bg=#ff9e64,fg=#1a1b26,bold] TMUX "
+                mode_renametab   "#[bg=#9ece6a,fg=#1a1b26,bold] RENAME "
+                mode_renamepane  "#[bg=#7dcfff,fg=#1a1b26,bold] RENAME "
 
                 // タブ(component_separators="|" に寄せて区切り)
                 tab_normal       "#[bg=#1a1b26,fg=#565f89] {name} #[fg=#414868]|"
