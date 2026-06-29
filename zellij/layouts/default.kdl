@@ -1,16 +1,30 @@
 // ~/.config/zellij/layouts/default.kdl
-// Zellij起動時のデフォルトレイアウト
-// 1ペイン + 標準のtab-bar/status-bar構成
-// 何も指定せず `zellij` した時のベース
-
+// zjstatus 1行構成(lualine night 準拠) + zjstatus-hints
 layout {
     default_tab_template {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
         children
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
+        pane size=1 borderless=true {
+            plugin location="zjstatus" {
+                format_left   "{mode}#[bg=#1a1b26] {tabs}"
+                format_center ""
+                format_right  "#[bg=#1a1b26,fg=#7aa2f7,bold] {session} #[bg=#1a1b26,fg=#565f89]{datetime}"
+                format_space  "#[bg=#1a1b26]"
+
+                border_enabled  "false"
+                border_position "top"
+
+                // モード色: tokyonight night の lualine_a 準拠(フラット・矢印なし)
+                mode_normal      "#[bg=#7aa2f7,fg=#1a1b26,bold] NORMAL "
+                mode_locked      "#[bg=#565f89,fg=#1a1b26,bold] LOCKED "
+
+                // タブ(component_separators="|" に寄せて区切り)
+                tab_normal       "#[bg=#1a1b26,fg=#565f89] {name} #[fg=#414868]|"
+                tab_active       "#[bg=#1a1b26,fg=#7aa2f7,bold] {name} #[fg=#414868]|"
+
+                datetime         " {format} "
+                datetime_format  "%H:%M"
+                datetime_timezone "Asia/Tokyo"
+            }
         }
     }
 
