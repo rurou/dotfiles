@@ -9,7 +9,7 @@ keybind = "global:f12=toggle_quick_terminal"
 font-family = "Cica Bold"
 font-thicken
 font-size = 15
-theme = "Solarized Dark Higher Contrast"
+theme = "catppuccin-mocha.conf"
 
 macos-option-as-alt = left
 
