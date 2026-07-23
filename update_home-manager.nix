@@ -1,12 +1,16 @@
 { pkgs, system, self}: pkgs.writeShellApplication{
   name = "update-home";
-    runtimeInputs = [ pkgs.git pkgs.nix ];
+    runtimeInputs = [ pkgs.git pkgs.lix pkgs.jq ];
     text = ''
       set -euo pipefail
 
       DOTFILES_DIR="$HOME/dotfiles"
       REPO_URL="https://github.com/rurou/dotfiles.git"
   
+      show_pin() {
+        jq -r '.nodes.nixpkgs.locked | .rev[:11] + " " + (.lastModified | todate)' flake.lock
+      }     
+
       echo "🔍 Checking if $DOTFILES_DIR exists..."
       if [ ! -d "$DOTFILES_DIR" ]; then
         echo "📥 Cloning dotfiles repo into $DOTFILES_DIR..."
@@ -21,8 +25,12 @@
       echo "✅ Checking flake..."
       nix flake check
 
+      echo "📌 nixpkgs pin (before): $(show_pin)"
+
       echo "🔄 Updating flake.lock..."
       nix flake update
+
+      echo "📌 nixpkgs pin (after):  $(show_pin)"
 
       echo "🏠 Applying home-manager config..."
       # ホスト名はいまの運用だと冗長なので削除
@@ -47,7 +55,7 @@
         echo "🔍 Git repository found, checking flake.lock changes..."
         if [ -n "$(git status --porcelain flake.lock)" ]; then
           git add flake.lock
-          git commit -m "chore: flake update $(date +%Y-%m-%d)"
+          git commit -m "chore: flake update $(date +%Y-%m-%d) (nixpkgs $(jq -r '.nodes.nixpkgs.locked.rev[:11]' flake.lock))"
           git push
           echo "✅ Changes committed & pushed."
         else
