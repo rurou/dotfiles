@@ -62,8 +62,8 @@ let
     pkgs.graphviz
     # programsから移行
     pkgs.neovim
-    pkgs.colima
-    pkgs.docker
+    # pkgs.colima
+    # pkgs.docker
     pkgs.docker-compose
     pkgs.zellij
     pkgs.atuin
