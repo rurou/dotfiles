@@ -5,7 +5,7 @@ return {
     "keaising/im-select.nvim",
     config = function()
       require("im_select").setup({
-        default_im_select  = "com.justsystems.inputmethod.atok34.Roman",
+        default_im_select  = "com.justsystems.inputmethod.atok35.Roman",
         disable_auto_restore = false,
         default_command    = "im-select",
       })
