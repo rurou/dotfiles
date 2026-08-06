@@ -290,7 +290,7 @@ in
     ".local/lib/plantuml.jar".source = "${pkgs.plantuml}/lib/plantuml.jar";
     ".config/yazi".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi";
     ".config/zellij".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zellij";
-    ".config/hammerspoon".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hammerspoon";
+    ".hammerspoon".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hammerspoon";
   };
 
   # xdg.configFileで配置するとホットリロード出来ない、--impureオプションが必要になるなど
