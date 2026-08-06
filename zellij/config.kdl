@@ -5,6 +5,7 @@
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl a" { SwitchToMode "normal"; }
+        bind "Alt f" { ToggleFocusFullscreen; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
