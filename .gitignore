@@ -14,3 +14,9 @@ zsh/.zsh_sessions/
 # Zellijのセッション永続化代わりに使うlayout
 zellij/layouts/wip.kdl
 zellij/layouts/wip_*.kdl
+
+# yazi pkg で入れる物は含めない
+# 自作とか直接導入の時は例外を追加すること
+yazi/plugins/*
+yazi/flavors/*
+
