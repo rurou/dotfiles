@@ -5,10 +5,15 @@ quick-terminal-autohide = false
 quick-terminal-space-behavior = move
 keybind = "global:f12=toggle_quick_terminal"
 
-# font-family = "Cica Bold"
-font-family = "Cica Bold"
-font-thicken
-font-size = 15
+font-family = Cica
+font-family = Hiragino Sans
+# font-style = Bold
+font-style-bold = Bold
+font-style-italic = Bold
+font-style-bold-italic = Bold
+
+font-thicken = true
+font-size = 16
 theme = "catppuccin-mocha.conf"
 
 macos-option-as-alt = left
