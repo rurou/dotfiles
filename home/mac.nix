@@ -68,6 +68,7 @@ let
     pkgs.zellij
     pkgs.atuin
     pkgs.pay-respects
+    pkgs.awscli2
   ];
   
   guiTools = [
