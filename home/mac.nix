@@ -45,10 +45,11 @@ let
     # nvfetcher
     #tree-sitter
     pkgs.dust
-    pkgs.glances
+    # pkgs.glances
+    pkgs.btop
     pkgs.gdu
     pkgs.dua
-    pkgs.byobu
+    # pkgs.byobu
     # bitwarden-cliは20250607時点でNixだとbrokenだったので、Homebrewで入れる
     # pkgs.bitwarden-cli
     pkgs.uv
