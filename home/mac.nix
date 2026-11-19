@@ -227,6 +227,7 @@ in
 
     settings.user.name = "rurou";
     settings.user.email = "28745212+rurou@users.noreply.github.com";
+    settings.core.quotePath = false;
 
     includes = [
       {
